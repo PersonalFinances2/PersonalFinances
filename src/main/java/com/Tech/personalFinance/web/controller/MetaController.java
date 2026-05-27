@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/metas")
-public class MetaContoller {
+public class MetaController {
     private final MetaService metaService;
 
-    public MetaContoller(MetaService metaService){
+    public MetaController(MetaService metaService){
         this.metaService = metaService;
     }
 

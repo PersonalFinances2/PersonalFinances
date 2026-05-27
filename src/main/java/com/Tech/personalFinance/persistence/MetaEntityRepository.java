@@ -44,7 +44,7 @@ public class MetaEntityRepository implements IMetaRepository{
         if (metaEntity == null)
             return null;
 
-        return this.crudMetaEntity.save(metaEntity);            
+        return this.crudMetaEntity.save(meta);            
     }
 
     @Override
