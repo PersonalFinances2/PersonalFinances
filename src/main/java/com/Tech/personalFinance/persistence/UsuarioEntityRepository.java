@@ -8,6 +8,7 @@ import com.Tech.personalFinance.domain.dto.UsuarioDto;
 import com.Tech.personalFinance.domain.dto.UsuarioInsertDto;
 import com.Tech.personalFinance.domain.repository.IUsuarioRepository;
 import com.Tech.personalFinance.persistence.crud.ICrudUsuarioEntity;
+import com.Tech.personalFinance.persistence.entity.UsuarioEntity;
 import com.Tech.personalFinance.persistence.mapper.UsuarioMapper;
 
 @Repository
@@ -27,8 +28,12 @@ public class UsuarioEntityRepository implements IUsuarioRepository{
 
     @Override
     public UsuarioDto getById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+        UsuarioEntity usuarioEntity = this.crudUsuarioEntity.findById(id).orElse(null);
+
+        if (usuarioEntity == null) 
+            return null;
+            
+        return this.usuarioMapper.toDto(usuarioEntity);
     }
 
     @Override

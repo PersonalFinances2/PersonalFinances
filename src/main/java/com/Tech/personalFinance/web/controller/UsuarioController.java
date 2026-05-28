@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
@@ -27,5 +28,14 @@ public class UsuarioController {
         return ResponseEntity.ok(this.usuarioService.getAll());
     }
     
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioDto> getById(@PathVariable Integer id) {
+        UsuarioDto usuarioDto = this.usuarioService.getById(id);
 
+        if (usuarioDto == null) 
+            return ResponseEntity.notFound().build();
+            
+        return ResponseEntity.ok(usuarioDto);
+    }
+    
 }
