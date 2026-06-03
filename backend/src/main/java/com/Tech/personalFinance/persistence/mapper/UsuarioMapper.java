@@ -22,13 +22,9 @@ public interface UsuarioMapper {
 
 
     @Mapping(source = "idTipoDocumento", target = "tipoDocumento")
-    @Mapping(source = "idPerfil", target = "perfil")
-    @Mapping(source = "idRol", target = "rol")
     UsuarioEntity toEntity(UsuarioInsertDto usuarioInsertDto);
 
     @Mapping(source = "idTipoDocumento", target = "tipoDocumento")
-    @Mapping(source = "idPerfil", target = "perfil")
-    @Mapping(source = "idRol", target = "rol")
     void  updateEntity(UsuarioInsertDto usuarioInsertDto, @MappingTarget UsuarioEntity usuarioEntity);
 
     default TipoDocumentoEntity mapTipoDocumento(Integer id) {      
@@ -37,21 +33,5 @@ public interface UsuarioMapper {
         tipoDocumento.setIdTipoDocumento(id);
 
         return tipoDocumento;
-    }
-
-    default PerfilEntity mapPerfil(Integer id) {
-
-        PerfilEntity perfil = new PerfilEntity();
-        perfil.setIdPerfil(id);
-
-        return perfil;
-    }
-
-    default RolEntity mapRol(Integer id) {
-
-        RolEntity rol = new RolEntity();
-        rol.setIdRol(id);
-
-        return rol;
     }
 }

@@ -23,9 +23,6 @@ public class MovimientoEntity {
     @Column(nullable = false)
     private LocalDate fecha;
 
-    @Column(name = "tipo_movimiento")
-    private String ingresoGasto;
-
     @ManyToOne
     @JoinColumn(name = "idCategoria", insertable=false, updatable=false)
     private CategoriaEntity categoria;
@@ -74,14 +71,6 @@ public class MovimientoEntity {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
-    }
-
-    public String getIngresoGasto() {
-        return ingresoGasto;
-    }
-
-    public void setIngresoGasto(String ingresoGasto) {
-        this.ingresoGasto = ingresoGasto;
     }
 
     public CategoriaEntity getCategoria() {
