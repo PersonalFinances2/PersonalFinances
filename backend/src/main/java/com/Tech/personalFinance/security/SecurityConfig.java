@@ -34,6 +34,8 @@ public class SecurityConfig {
             HttpSecurity http) throws Exception {
 
         return http
+                .cors(cors -> {})
+                
                 .csrf(csrf -> csrf.disable())
 
                 .sessionManagement(session -> session.sessionCreationPolicy(

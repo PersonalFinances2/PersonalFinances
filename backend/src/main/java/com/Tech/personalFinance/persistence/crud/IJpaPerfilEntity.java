@@ -9,5 +9,4 @@ import com.Tech.personalFinance.persistence.entity.PerfilEntity;
 public interface IJpaPerfilEntity extends JpaRepository<PerfilEntity, Integer> {
 
     Optional<PerfilEntity> findByUsername(String username);
-
 }
