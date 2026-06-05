@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './components/login/Login';
 import ResumenFinanciero from './components/movimientos/ResumenFinanciero';
 import MetaPage from './pages/MetaPage';
+import UsuarioPage from './pages/UsuarioPage';
 import ProtectedRoute from './services/auth/ProtectedRoute';
 import HomePage from './pages/HomePage';
+import UsuarioForm from './components/usuario/UsuarioForm';
 
 function App() {
 
@@ -21,9 +23,9 @@ function App() {
         <Route
           path="/metas"
           element={
-            <ProtectedRoute>
+            
               <MetaPage />
-            </ProtectedRoute>
+            
           }
         />
 
@@ -35,13 +37,21 @@ function App() {
             </ProtectedRoute>
           }
         />
-        
+
         <Route
           path="/home"
           element={
             <ProtectedRoute>
               <HomePage />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/usuarios"
+          element={
+          
+              <UsuarioForm />
+            
           }
         />
 
