@@ -2,35 +2,29 @@ package com.Tech.personalFinance.domain.service;
 
 import java.util.List;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.Tech.personalFinance.domain.dto.MovimientoMontoDto;
 import com.Tech.personalFinance.domain.dto.ResumenFinancieroDto;
 import com.Tech.personalFinance.domain.repository.IMovimientoRepository;
-import com.Tech.personalFinance.persistence.PerfilEntityRepository;
-import com.Tech.personalFinance.persistence.entity.PerfilEntity;
+import com.Tech.personalFinance.security.BuscarIdUsuario;
 
 @Service
 public class MovimientoService {
     private final IMovimientoRepository movimientoRepository;
-    private final PerfilEntityRepository perfilEntityRepository;
+    private final BuscarIdUsuario buscarIdUsuario;
 
-    public MovimientoService(IMovimientoRepository movimientoRepository, PerfilEntityRepository perfilEntityRepository){
+    public MovimientoService(IMovimientoRepository movimientoRepository, BuscarIdUsuario buscarIdUsuario){
         this.movimientoRepository = movimientoRepository;
-        this.perfilEntityRepository = perfilEntityRepository;
+        this.buscarIdUsuario = buscarIdUsuario;
     }
 
     public ResumenFinancieroDto getAll(){
 
         //Buscar Id del Usuario
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        PerfilEntity usuario = this.perfilEntityRepository.findByUsername(username);
+        Integer IdUsuario = this.buscarIdUsuario.getIdUsuario();
 
-
-        List<MovimientoMontoDto> movimientos = this.movimientoRepository.findByUsuarioIdUsuario(usuario.getIdUsuario());
+        List<MovimientoMontoDto> movimientos = this.movimientoRepository.findByUsuarioIdUsuario(IdUsuario);
 
         double ingresos = movimientos.stream()
                 .filter(m -> m.categoria() == 1)
