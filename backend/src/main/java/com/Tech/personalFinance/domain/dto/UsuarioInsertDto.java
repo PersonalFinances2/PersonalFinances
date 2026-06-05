@@ -8,5 +8,12 @@ public record UsuarioInsertDto(
 
     Integer idTipoDocumento,
 
-    String documento
+    String documento,
+
+    String username,
+
+    String contrasenia,
+
+    Integer idRol
+
 ) {}

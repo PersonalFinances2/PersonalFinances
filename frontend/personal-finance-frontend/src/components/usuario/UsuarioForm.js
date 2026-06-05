@@ -43,7 +43,7 @@ function UsuarioForm() {
         />
 
         <select name="tipoDocumento" onChange={handleChange}>
-          <option value="">Seleccione</option>
+          <option value="" disabled>Tipo de Documento</option>
           <option value="CC">CC</option>
           <option value="TI">TI</option>
           <option value="CE">CE</option>

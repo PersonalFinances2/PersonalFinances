@@ -16,11 +16,11 @@ public class RolEntity {
 
     @Column(nullable = false)
     private String rol;
+    
 
     public Integer getIdRol() {
         return idRol;
     }
-
     
     public void setIdRol(Integer idRol) {
         this.idRol = idRol;

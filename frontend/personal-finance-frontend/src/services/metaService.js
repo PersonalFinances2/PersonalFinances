@@ -1,3 +1,5 @@
+import { authHeader } from "./auth/authHeader";
+
 const API_URL = "http://localhost:8080/metas";
 
 export async function crudMetas(method = "GET", id = "", data = null) {
@@ -5,7 +7,8 @@ export async function crudMetas(method = "GET", id = "", data = null) {
     const options = {
         method,
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            ...authHeader()
         }
     };
     if (data){

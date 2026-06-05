@@ -5,6 +5,5 @@ import java.util.List;
 import com.Tech.personalFinance.domain.dto.MovimientoMontoDto;
 
 public interface IMovimientoRepository {
-    List<MovimientoMontoDto> getAll();
-
+    List<MovimientoMontoDto> findByUsuarioIdUsuario(Integer idUsuario);;
 }

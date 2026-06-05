@@ -70,8 +70,8 @@ function ResumenFinanciero() {
         }
     };
 
-    return (
-        <div className="resumen-container">
+    return (        
+        <div className="resumen-container">            
 
             <h2>Resumen financiero</h2>
 

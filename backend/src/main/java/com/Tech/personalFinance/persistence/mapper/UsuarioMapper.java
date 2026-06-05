@@ -8,8 +8,6 @@ import org.mapstruct.MappingTarget;
 
 import com.Tech.personalFinance.domain.dto.UsuarioDto;
 import com.Tech.personalFinance.domain.dto.UsuarioInsertDto;
-import com.Tech.personalFinance.persistence.entity.PerfilEntity;
-import com.Tech.personalFinance.persistence.entity.RolEntity;
 import com.Tech.personalFinance.persistence.entity.TipoDocumentoEntity;
 import com.Tech.personalFinance.persistence.entity.UsuarioEntity;
 

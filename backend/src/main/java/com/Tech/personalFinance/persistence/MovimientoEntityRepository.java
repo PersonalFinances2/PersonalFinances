@@ -20,8 +20,8 @@ public class MovimientoEntityRepository implements IMovimientoRepository{
     }
 
     @Override
-    public List<MovimientoMontoDto> getAll() {
-        return this.movimientoMapper.toDto(this.crudMovimientoEntity.findAll());
+    public List<MovimientoMontoDto> findByUsuarioIdUsuario(Integer idUsuario) {
+         return this.movimientoMapper.toDto(this.crudMovimientoEntity.findByUsuarioIdUsuario(idUsuario));
     }
 
 }

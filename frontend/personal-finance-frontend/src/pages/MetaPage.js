@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import MetaForm from "../components/metas/MetaForm";
 import { crudMetas } from "../services/metaService";
 import MetaList from "../components/metas/MetaList";
+import Navbar from "../components/navbar/Navbar";
+import ResumenFinanciero from "../components/movimientos/ResumenFinanciero";
 
 function MetaPage() {
 
@@ -28,6 +30,7 @@ function MetaPage() {
 
     return(
         <div>      
+            <Navbar />
             <MetaForm 
             obtenerMetas={obtenerMetas} 
             metaEditar={metaEditar}
