@@ -47,6 +47,15 @@ public class MetaService {
     }
 
     public MetaEntity update(Integer id, MetaEntity metaEntity){
+
+        //Buscar el Id del usuario 
+        Integer IdUsuario = this.buscarIdUsuario.getIdUsuario();
+        
+        UsuarioEntity usuario = new UsuarioEntity();
+        usuario.setIdUsuario(IdUsuario);
+
+        metaEntity.setUsuario(usuario);
+
         return this.metaRepository.update(id, metaEntity);
     }
 
