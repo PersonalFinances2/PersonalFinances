@@ -1,5 +1,7 @@
 package com.Tech.personalFinance.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class MetaEntity {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
+    @JsonIgnore
     private UsuarioEntity usuario;
     
 

@@ -12,8 +12,8 @@ public record UsuarioInsertDto(
 
     String username,
 
-    String contrasenia,
+    String contrasenia
 
-    Integer idRol
+    //Integer idRol
 
 ) {}

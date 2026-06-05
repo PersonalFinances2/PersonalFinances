@@ -10,4 +10,6 @@ public interface IMetaRepository {
     MetaEntity save(MetaEntity meta);
     MetaEntity update(Integer id, MetaEntity meta);
     MetaEntity delete(Integer id);
+
+    List<MetaEntity> findByUsuarioIdUsuario(Integer idUsuario);
 }

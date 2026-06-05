@@ -54,7 +54,7 @@ public class UsuarioEntityRepository implements IUsuarioRepository{
         );
 
         RolEntity rol = new RolEntity();
-        rol.setIdRol(usuarioInsertDto.idRol());
+        rol.setIdRol(2);
 
         perfil.setRol(rol);
 
