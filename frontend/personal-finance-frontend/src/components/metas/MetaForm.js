@@ -135,18 +135,7 @@ function MetaForm({
                         value={meta.monto}
                         onChange={handleChange}
                     />
-                </div>
-
-                <div className="meta-form-group">
-                    <label>Id Usuario:</label>
-                    <input
-                        type="number"
-                        placeholder="Ingrese el Usuario"
-                        name="idUsuario"
-                        value={meta.usuario.idUsuario}
-                        onChange={handleChange}
-                    />
-                </div>
+                </div>                
 
                 <div lassName="meta-form-buttons">
                     <button type="submit"

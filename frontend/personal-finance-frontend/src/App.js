@@ -23,9 +23,9 @@ function App() {
         <Route
           path="/metas"
           element={
-            
+            <ProtectedRoute>
               <MetaPage />
-            
+            </ProtectedRoute>
           }
         />
 
