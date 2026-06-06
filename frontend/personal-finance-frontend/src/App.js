@@ -7,6 +7,7 @@ import UsuarioPage from './pages/UsuarioPage';
 import ProtectedRoute from './services/auth/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import UsuarioForm from './components/usuario/UsuarioForm';
+import UsuarioList from './pages/UsuarioList';
 
 function App() {
 
@@ -49,12 +50,20 @@ function App() {
         <Route
           path="/usuarios"
           element={
-          
-              <UsuarioForm />
-            
+
+            <UsuarioPage />
+
           }
         />
 
+
+        <Route
+          path="/listausuario"
+          element={
+            <ProtectedRoute> UsuarioList  </ProtectedRoute>
+
+          }
+        />
       </Routes>
 
     </BrowserRouter>

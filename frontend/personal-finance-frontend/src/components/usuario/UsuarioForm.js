@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./UsuarioForm.css";
 
-function UsuarioForm() {
+function UsuarioForm({ agregarUsuario }) {
   const [usuario, setUsuario] = useState({
     nombre: "",
     apellido: "",
@@ -19,8 +19,16 @@ function UsuarioForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(usuario);
+    agregarUsuario(usuario);
+
+    setUsuario({
+      nombre: "",
+      apellido: "",
+      tipoDocumento: "",
+      documento: "",
+      username: "",
+      password: "",
+    });
   };
 
   return (
@@ -39,10 +47,13 @@ function UsuarioForm() {
           type="text"
           name="apellido"
           placeholder="Apellido"
+          value={usuario.nombre}
           onChange={handleChange}
         />
 
-        <select name="tipoDocumento" onChange={handleChange}>
+        <select name="tipoDocumento"
+          value={usuario.tipoDocumento}
+          onChange={handleChange}>
           <option value="" disabled>Tipo de Documento</option>
           <option value="CC">CC</option>
           <option value="TI">TI</option>

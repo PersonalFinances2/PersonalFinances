@@ -25,6 +25,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+
 }
 
 .usuario-container input:focus,
@@ -46,3 +47,4 @@
 .usuario-container button:hover {
     background-color: #198754;
 }
+
