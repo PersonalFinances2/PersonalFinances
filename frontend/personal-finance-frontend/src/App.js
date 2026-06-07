@@ -51,18 +51,16 @@ function App() {
         <Route
           path="/usuarios"
           element={
-
             <UsuarioPage />
-
           }
         />
-
 
         <Route
           path="/listausuario"
           element={
-            <ProtectedRoute> UsuarioList  </ProtectedRoute>
-
+            <ProtectedRoute> 
+              <UsuarioList />  
+            </ProtectedRoute>
           }
         />
       </Routes>

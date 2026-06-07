@@ -19,10 +19,25 @@ function Navbar() {
         <nav className="navbar">
 
             <div className="navbar-logo">
-                Personal Finance
+                <Link
+                    to="/home"
+                    style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                    }}
+                >
+                    Personal Finance
+                </Link>
             </div>
 
             <div className="navbar-links">
+
+                <Link
+                    to="/listausuario"
+                    className="navbar-link"
+                >
+                    Usuarios
+                </Link>
 
                 <Link
                     to="/metas"
