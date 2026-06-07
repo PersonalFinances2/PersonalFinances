@@ -48,7 +48,6 @@ function MetaList({ metas, setMetaEditar, obtenerMetas}) {
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Monto</th>
-                        <th>Usuario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -61,8 +60,6 @@ function MetaList({ metas, setMetaEditar, obtenerMetas}) {
                             <td>{meta.nombre}</td>
 
                             <td>{meta.monto}</td>
-
-                            <td>{meta.usuario?.idUsuario}</td>
 
                             <td> 
                                 <button
