@@ -1,6 +1,4 @@
-const API_URL = "http://localhost:8080/usuarios";
-
-export async function crudUsuarios(method = "GET", id = "", data = null) {
+export async function crudUsuarios(method = "GET", endpoint = "", data = null) {
 
     const options = {
         method,
@@ -14,7 +12,7 @@ export async function crudUsuarios(method = "GET", id = "", data = null) {
     }
 
     const response = await fetch(
-        id ? `${API_URL}/${id}` : API_URL,
+        `http://localhost:8080/usuarios${endpoint}`,
         options
     );
 

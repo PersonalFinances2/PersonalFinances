@@ -57,7 +57,7 @@ function UsuarioForm({ agregarUsuario }) {
 
       const respuesta = await crudUsuarios(
         "POST",
-        "",
+        "/crearusuario",
         usuarioDto
       );
 
