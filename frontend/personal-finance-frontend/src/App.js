@@ -47,6 +47,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
         <Route
           path="/usuarios"
           element={

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../../services/authService";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 function Login() {
 
@@ -101,6 +102,14 @@ function Login() {
                     </button>
 
                 </form>
+
+                <div className="usuarios">
+                    <Link
+                        to="/usuarios"
+                    >
+                        Regístrate aquí.
+                    </Link>
+                </div>
 
             </div>
 

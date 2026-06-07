@@ -104,6 +104,10 @@
     cursor: not-allowed;
 }
 
+.usuarios {
+  margin-top: 10px;
+}
+
 .error-message {
     background: #fdeaea;
     color: #dc3545;
