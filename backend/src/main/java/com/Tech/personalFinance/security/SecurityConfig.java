@@ -45,7 +45,7 @@ public class SecurityConfig {
 
                         .requestMatchers(
                                 "/auth/login",
-                                "/usuarios/crearUsuario",
+                                "/usuarios/crearusuario",
                                 "/tipo-documento")
                         .permitAll()
 
