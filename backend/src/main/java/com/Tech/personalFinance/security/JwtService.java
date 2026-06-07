@@ -16,6 +16,16 @@ public class JwtService {
     public String generateToken(UserDetails userDetails) {
 
     return Jwts.builder()
+            
+            .claim(
+                "role",
+                userDetails.getAuthorities()
+                    .stream()
+                    .findFirst()
+                    .get()
+                    .getAuthority()
+            )
+
             .subject(userDetails.getUsername())
             .issuedAt(new Date())
             .expiration(
