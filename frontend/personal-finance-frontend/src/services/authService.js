@@ -1,3 +1,5 @@
+import { jwtDecode } from "jwt-decode";
+
 const API_URL = "http://localhost:8080/auth/login";
 
 export async function login(username, contrasenia) {
@@ -39,4 +41,18 @@ export function logout() {
 //Validar si hay sesión
 export function isAuthenticated() {
     return localStorage.getItem("token") !== null;
+}
+
+//Obtner el rol
+export function getRole() {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        return null;
+    }
+
+    const decoded = jwtDecode(token);
+
+    return decoded.role;
 }

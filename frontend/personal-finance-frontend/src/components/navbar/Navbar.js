@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../services/authService";
+import { logout, getRole } from "../../services/authService";
 import "./Navbar.css";
 
 function Navbar() {
@@ -7,6 +7,7 @@ function Navbar() {
     const navigate = useNavigate();
 
     const username = localStorage.getItem("username") || "Usuario";
+    const rol = getRole();
 
     function cerrarSesion() {
 
@@ -32,12 +33,14 @@ function Navbar() {
 
             <div className="navbar-links">
 
-                <Link
-                    to="/listausuario"
-                    className="navbar-link"
-                >
-                    Usuarios
-                </Link>
+                {rol === "ROLE_ADMIN" && (
+                    <Link
+                        to="/listausuario"
+                        className="navbar-link"
+                    >
+                        Usuarios
+                    </Link>
+                )}
 
                 <Link
                     to="/metas"
