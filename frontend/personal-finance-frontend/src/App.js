@@ -8,6 +8,8 @@ import ProtectedRoute from './services/auth/ProtectedRoute';
 import HomePage from './pages/HomePage';
 import UsuarioForm from './components/usuario/UsuarioForm';
 import UsuarioList from './pages/UsuarioList';
+import MovimientoPage from './pages/MovimientoPage';
+import MovimientosPage from './pages/MovimientosPage';
 
 function App() {
 
@@ -47,7 +49,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        
+
         <Route
           path="/usuarios"
           element={
@@ -58,12 +60,22 @@ function App() {
         <Route
           path="/listausuario"
           element={
-            <ProtectedRoute> 
-              <UsuarioList />  
+            <ProtectedRoute>
+              <UsuarioList />
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/movimiento"
+          element={<MovimientoPage />}
+        />
+        <Route
+          path="/movimientos/nuevo"
+          element={<MovimientosPage />}
+        />
       </Routes>
+
 
     </BrowserRouter>
   );
