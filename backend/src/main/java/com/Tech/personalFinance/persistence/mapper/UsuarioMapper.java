@@ -14,6 +14,7 @@ import com.Tech.personalFinance.persistence.entity.UsuarioEntity;
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
     @Mapping(source = "tipoDocumento.nombre", target = "tipoDocumento")
+    @Mapping(source = "perfil.rol.rol", target = "rol")
     UsuarioDto toDto(UsuarioEntity usuarioEntity);
 
     List<UsuarioDto> toDto(Iterable<UsuarioEntity> usariosEntity);

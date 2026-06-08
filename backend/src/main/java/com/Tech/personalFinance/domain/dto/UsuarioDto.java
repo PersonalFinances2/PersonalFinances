@@ -9,6 +9,8 @@ public record UsuarioDto(
 
     String tipoDocumento,
 
-    String documento
+    String documento,
+
+    String rol
     
 ) { }
