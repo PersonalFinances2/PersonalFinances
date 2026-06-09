@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { crearMovimiento } from "../../services/movimientoService";
 import "./MovimientoForm.css";
 
 function MovimientoForm() {
+
+  const navigate = useNavigate();
+  const fechaActual = new Date().toISOString().split("T")[0];
+
   const [movimiento, setMovimiento] = useState({
     titulo: "",
     descripcion: "",
@@ -21,6 +26,13 @@ function MovimientoForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const hoy = new Date().toISOString().split("T")[0];
+
+    if (movimiento.fecha > hoy) {
+        alert("La fecha no puede ser superior a la fecha actual");
+        return;
+    }
+
     try {
 
       const nuevoMovimiento = {
@@ -33,13 +45,10 @@ function MovimientoForm() {
         )
       };
 
-      await crearMovimiento(
-        nuevoMovimiento
-      );
+      await crearMovimiento(nuevoMovimiento);
 
-      alert(
-        "Movimiento registrado correctamente"
-      );
+      alert("Movimiento registrado correctamente");
+      navigate("/Lista/movimientos");
 
       setMovimiento({
         titulo: "",
@@ -102,9 +111,10 @@ function MovimientoForm() {
 
         <label>Categoría</label>
         <select
-          name="id_categoria"
+          name="idCategoria"
           value={movimiento.idCategoria}
           onChange={handleChange}
+          max={fechaActual}
           required
         >
           <option value="">Seleccione</option>
