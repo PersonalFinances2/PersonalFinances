@@ -11,7 +11,7 @@ public record MovimientoInsertDto(
 
     LocalDate fecha,
 
-    Integer IdCategoria
+    Integer idCategoria
 ) {
 
 }

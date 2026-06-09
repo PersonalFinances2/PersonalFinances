@@ -25,7 +25,7 @@ public interface MovimientoMapper {
 
     List<MovimientoDto> toDtoMovimiento(Iterable<MovimientoEntity> movimiento);
 
-    @Mapping(source = "IdCategoria", target = "categoria")
+    @Mapping(source = "idCategoria", target = "categoria")
     MovimientoEntity toEntity(MovimientoInsertDto movimientoInsertDto);
 
     default CategoriaEntity mapCategoria(Integer id) {      
