@@ -24,11 +24,11 @@ public class MovimientoEntity {
     private LocalDate fecha;
 
     @ManyToOne
-    @JoinColumn(name = "idCategoria", insertable=false, updatable=false)
+    @JoinColumn(name = "idCategoria")
     private CategoriaEntity categoria;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", insertable=false, updatable=false)
+    @JoinColumn(name = "idUsuario")
     private UsuarioEntity usuario;
 
 
