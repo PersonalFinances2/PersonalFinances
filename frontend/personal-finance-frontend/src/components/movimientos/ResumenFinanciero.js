@@ -84,21 +84,21 @@ function ResumenFinanciero() {
 
             <div className="resumen-cards">
 
-                <div className="card ingreso">
+                <div className="card ingresos">
                     <h3>Ingresos</h3>
                     <p>
                         ${resumen.ingresos.toLocaleString()}
                     </p>
                 </div>
 
-                <div className="card gasto">
+                <div className="card gastos">
                     <h3>Gastos</h3>
                     <p>
                         ${resumen.gastos.toLocaleString()}
                     </p>
                 </div>
 
-                <div className="card ahorro">
+                <div className="card ahorros">
                     <h3>Ahorro</h3>
                     <p>
                         ${resumen.ahorro.toLocaleString()}

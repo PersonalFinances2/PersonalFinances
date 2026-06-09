@@ -11,6 +11,7 @@ function UsuarioTable({ usuarios }) {
             <th>Apellido</th>
             <th>Tipo Documento</th>
             <th>Documento</th>
+            <th>Rol</th>
           </tr>
         </thead>
 
@@ -21,6 +22,7 @@ function UsuarioTable({ usuarios }) {
               <td>{usuario.apellido}</td>
               <td>{usuario.tipoDocumento}</td>
               <td>{usuario.documento}</td>
+              <td>{usuario.rol}</td>
             </tr>
           ))}
         </tbody>
