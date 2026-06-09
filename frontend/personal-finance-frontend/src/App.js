@@ -6,10 +6,9 @@ import MetaPage from './pages/MetaPage';
 import UsuarioPage from './pages/UsuarioPage';
 import ProtectedRoute from './services/auth/ProtectedRoute';
 import HomePage from './pages/HomePage';
-import UsuarioForm from './components/usuario/UsuarioForm';
 import UsuarioList from './pages/UsuarioList';
-import MovimientoPage from './pages/MovimientoPage';
 import MovimientosPage from './pages/MovimientosPage';
+import MovimientoFormPage from './pages/MovimientoFormPage';
 
 function App() {
 
@@ -67,12 +66,20 @@ function App() {
         />
 
         <Route
-          path="/movimiento"
-          element={<MovimientoPage />}
+          path="/nuevo/movimiento"
+          element={
+            <ProtectedRoute>
+              <MovimientoFormPage />
+            </ProtectedRoute>
+          }
         />
         <Route
-          path="/movimientos/nuevo"
-          element={<MovimientosPage />}
+          path="/Lista/movimientos"
+          element={
+            <ProtectedRoute>
+              <MovimientosPage />
+            </ProtectedRoute>
+        }
         />
       </Routes>
 

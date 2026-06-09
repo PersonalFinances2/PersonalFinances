@@ -49,6 +49,13 @@ function Navbar() {
                     Metas
                 </Link>
 
+                <Link
+                    to="/Lista/movimientos"
+                    className="navbar-link"
+                >
+                    Movimientos
+                </Link>
+
                 <span className="navbar-user">
                     {username}
                 </span>

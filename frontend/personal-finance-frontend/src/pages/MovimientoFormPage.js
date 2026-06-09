@@ -1,9 +1,13 @@
-import MovimientoForm from "../components/movimientos/MovimientoFormPage";
+import MovimientoForm from "../components/movimientos/MovimientoForm";
+import Navbar from "../components/navbar/Navbar";
 
 function MovimientoFormPage() {
     return (
-        <div className="page-container">
-            <MovimientoFormPage />
+        <div>
+            <Navbar />
+            <div className="page-container">
+                <MovimientoForm />
+            </div>
         </div>
     );
 }
