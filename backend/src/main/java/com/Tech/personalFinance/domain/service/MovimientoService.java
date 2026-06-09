@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.Tech.personalFinance.domain.dto.MovimientoDto;
 import com.Tech.personalFinance.domain.dto.MovimientoMontoDto;
 import com.Tech.personalFinance.domain.dto.ResumenFinancieroDto;
 import com.Tech.personalFinance.domain.repository.IMovimientoRepository;
@@ -39,6 +40,15 @@ public class MovimientoService {
         double ahorro = ingresos - gastos;
 
         return new ResumenFinancieroDto(ingresos, gastos, ahorro);
+   }
+   
+   public List<MovimientoDto> getMovimiento(){
+        //Buscar Id del Usuario
+        Integer IdUsuario = this.buscarIdUsuario.getIdUsuario();
+
+        List<MovimientoDto> movimientos = this.movimientoRepository.getMoviminetos(IdUsuario);
+
+        return movimientos;
    }
 
 }

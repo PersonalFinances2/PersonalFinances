@@ -5,6 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import com.Tech.personalFinance.domain.dto.MovimientoDto;
 import com.Tech.personalFinance.domain.dto.MovimientoMontoDto;
 import com.Tech.personalFinance.persistence.entity.MovimientoEntity;
 
@@ -16,4 +17,9 @@ public interface MovimientoMapper {
 
     List<MovimientoMontoDto> toDto(Iterable<MovimientoEntity> movimientoEntity);
 
+    
+    @Mapping(source = "categoria.idCategoria", target = "idCategoria")
+    MovimientoDto toDtoMovimiento(MovimientoEntity movimiento);
+
+    List<MovimientoDto> toDtoMovimiento(Iterable<MovimientoEntity> movimiento);
 }

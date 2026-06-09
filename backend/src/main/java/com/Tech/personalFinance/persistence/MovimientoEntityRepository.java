@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.Tech.personalFinance.domain.dto.MovimientoDto;
 import com.Tech.personalFinance.domain.dto.MovimientoMontoDto;
 import com.Tech.personalFinance.domain.repository.IMovimientoRepository;
 import com.Tech.personalFinance.persistence.crud.ICrudMovimientoEntity;
@@ -21,7 +22,12 @@ public class MovimientoEntityRepository implements IMovimientoRepository{
 
     @Override
     public List<MovimientoMontoDto> findByUsuarioIdUsuario(Integer idUsuario) {
-         return this.movimientoMapper.toDto(this.crudMovimientoEntity.findByUsuarioIdUsuario(idUsuario));
+        return this.movimientoMapper.toDto(this.crudMovimientoEntity.findByUsuarioIdUsuario(idUsuario));
+    }
+
+    @Override
+    public List<MovimientoDto> getMoviminetos(Integer idUsuario) {
+        return this.movimientoMapper.toDtoMovimiento(this.crudMovimientoEntity.findByUsuarioIdUsuario(idUsuario));
     }
 
 }
