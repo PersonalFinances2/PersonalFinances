@@ -1,14 +1,19 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { crearMovimiento } from "../../services/movimientoService";
 import "./MovimientoForm.css";
 
 function MovimientoForm() {
+
+  const navigate = useNavigate();
+  const fechaActual = new Date().toISOString().split("T")[0];
+
   const [movimiento, setMovimiento] = useState({
     titulo: "",
     descripcion: "",
-    fecha: "",
-    tipo_movimiento: "",
     monto: "",
-    id_categoria: ""
+    fecha: "",
+    idCategoria: ""
   });
 
   const handleChange = (e) => {
@@ -18,12 +23,49 @@ function MovimientoForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(movimiento);
+    const hoy = new Date().toISOString().split("T")[0];
 
-    
+    if (movimiento.fecha > hoy) {
+        alert("La fecha no puede ser superior a la fecha actual");
+        return;
+    }
+
+    try {
+
+      const nuevoMovimiento = {
+        titulo: movimiento.titulo,
+        descripcion: movimiento.descripcion,
+        monto: Number(movimiento.monto),
+        fecha: movimiento.fecha,
+        idCategoria: Number(
+          movimiento.idCategoria
+        )
+      };
+
+      await crearMovimiento(nuevoMovimiento);
+
+      alert("Movimiento registrado correctamente");
+      navigate("/Lista/movimientos");
+
+      setMovimiento({
+        titulo: "",
+        descripcion: "",
+        monto: "",
+        fecha: "",
+        idCategoria: ""
+      });
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert(
+        "Error al registrar movimiento"
+      );
+    }
   };
 
   return (
@@ -49,27 +91,6 @@ function MovimientoForm() {
           required
         />
 
-        <label>Fecha</label>
-        <input
-          type="date"
-          name="fecha"
-          value={movimiento.fecha}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Tipo de movimiento</label>
-        <select
-          name="tipo_movimiento"
-          value={movimiento.tipo_movimiento}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Seleccione</option>
-          <option value="INGRESO">Ingreso</option>
-          <option value="GASTO">Gasto</option>
-        </select>
-
         <label>Monto</label>
         <input
           type="number"
@@ -79,14 +100,27 @@ function MovimientoForm() {
           required
         />
 
-        <label>Categoría</label>
+        <label>Fecha</label>
         <input
-          type="number"
-          name="id_categoria"
-          value={movimiento.id_categoria}
+          type="date"
+          name="fecha"
+          value={movimiento.fecha}
           onChange={handleChange}
           required
         />
+
+        <label>Categoría</label>
+        <select
+          name="idCategoria"
+          value={movimiento.idCategoria}
+          onChange={handleChange}
+          max={fechaActual}
+          required
+        >
+          <option value="">Seleccione</option>
+          <option value="1">Ingreso</option>
+          <option value="2">Gasto</option>
+        </select>
 
         <button type="submit">
           Guardar Movimiento
