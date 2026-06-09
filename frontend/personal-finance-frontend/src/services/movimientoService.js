@@ -38,3 +38,26 @@ export async function getAllMovimientos() {
 
     return await response.json();
 }
+
+export async function crearMovimiento(movimiento) {
+
+    const response = await fetch(
+        `${API_URL}/nuevo`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                ...authHeader()
+            },
+            body: JSON.stringify(movimiento)
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error(
+            "Error al crear movimiento"
+        );
+    }
+
+    return await response.json();
+}
