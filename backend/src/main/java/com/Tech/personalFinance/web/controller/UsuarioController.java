@@ -12,14 +12,13 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
-
-
 
 
 @RestController
@@ -31,7 +30,8 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping()
+    @GetMapping("/listaUsuarios")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<List<UsuarioDto>> getAll() {
         return ResponseEntity.ok(this.usuarioService.getAll());
     }
@@ -46,7 +46,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioDto);
     }
     
-    @PostMapping()
+    @PostMapping("/crearusuario")
     public ResponseEntity<UsuarioDto> add(@RequestBody UsuarioInsertDto usuarioInsertDto) {
         UsuarioDto usuarioDto = this.usuarioService.add(usuarioInsertDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioDto);

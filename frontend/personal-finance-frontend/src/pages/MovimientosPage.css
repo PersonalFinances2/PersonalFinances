@@ -1,0 +1,29 @@
+.movimientos-page {
+    padding: 30px;
+}
+
+.header-movimientos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-nuevo {
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buscador {
+    margin: 20px 0;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}

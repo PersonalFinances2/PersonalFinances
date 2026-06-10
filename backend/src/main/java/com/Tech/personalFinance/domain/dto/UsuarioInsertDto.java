@@ -10,7 +10,10 @@ public record UsuarioInsertDto(
 
     String documento,
 
-    Integer idPerfil,
-    
-    Integer idRol
+    String username,
+
+    String contrasenia
+
+    //Integer idRol
+
 ) {}

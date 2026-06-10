@@ -4,21 +4,29 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.Tech.personalFinance.domain.dto.MovimientoDto;
+import com.Tech.personalFinance.domain.dto.MovimientoInsertDto;
 import com.Tech.personalFinance.domain.dto.MovimientoMontoDto;
 import com.Tech.personalFinance.domain.dto.ResumenFinancieroDto;
 import com.Tech.personalFinance.domain.repository.IMovimientoRepository;
+import com.Tech.personalFinance.security.BuscarIdUsuario;
 
 @Service
 public class MovimientoService {
     private final IMovimientoRepository movimientoRepository;
+    private final BuscarIdUsuario buscarIdUsuario;
 
-    public MovimientoService(IMovimientoRepository movimientoRepository){
+    public MovimientoService(IMovimientoRepository movimientoRepository, BuscarIdUsuario buscarIdUsuario) {
         this.movimientoRepository = movimientoRepository;
+        this.buscarIdUsuario = buscarIdUsuario;
     }
 
-    public ResumenFinancieroDto getAll(){
+    public ResumenFinancieroDto getAll() {
 
-        List<MovimientoMontoDto> movimientos = this.movimientoRepository.getAll();
+        // Buscar Id del Usuario
+        Integer IdUsuario = this.buscarIdUsuario.getIdUsuario();
+
+        List<MovimientoMontoDto> movimientos = this.movimientoRepository.findByUsuarioIdUsuario(IdUsuario);
 
         double ingresos = movimientos.stream()
                 .filter(m -> m.categoria() == 1)
@@ -33,6 +41,22 @@ public class MovimientoService {
         double ahorro = ingresos - gastos;
 
         return new ResumenFinancieroDto(ingresos, gastos, ahorro);
+    }
+
+    public List<MovimientoDto> getMovimiento() {
+        // Buscar Id del Usuario
+        Integer IdUsuario = this.buscarIdUsuario.getIdUsuario();
+
+        List<MovimientoDto> movimientos = this.movimientoRepository.getMoviminetos(IdUsuario);
+
+        return movimientos;
+    }
+
+   public MovimientoDto add(MovimientoInsertDto movimientoInsertDto){
+        // Buscar Id del Usuario
+        Integer IdUsuario = this.buscarIdUsuario.getIdUsuario();
+
+        return this.movimientoRepository.save(IdUsuario, movimientoInsertDto);
    }
 
 }

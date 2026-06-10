@@ -2,12 +2,15 @@ package com.Tech.personalFinance.persistence;
 
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.Tech.personalFinance.domain.dto.UsuarioDto;
 import com.Tech.personalFinance.domain.dto.UsuarioInsertDto;
 import com.Tech.personalFinance.domain.repository.IUsuarioRepository;
 import com.Tech.personalFinance.persistence.crud.ICrudUsuarioEntity;
+import com.Tech.personalFinance.persistence.entity.PerfilEntity;
+import com.Tech.personalFinance.persistence.entity.RolEntity;
 import com.Tech.personalFinance.persistence.entity.UsuarioEntity;
 import com.Tech.personalFinance.persistence.mapper.UsuarioMapper;
 
@@ -15,10 +18,13 @@ import com.Tech.personalFinance.persistence.mapper.UsuarioMapper;
 public class UsuarioEntityRepository implements IUsuarioRepository{
     private final ICrudUsuarioEntity crudUsuarioEntity;
     private final UsuarioMapper usuarioMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioEntityRepository(ICrudUsuarioEntity crudUsuarioEntity, UsuarioMapper usuarioMapper){
+    public UsuarioEntityRepository(ICrudUsuarioEntity crudUsuarioEntity, UsuarioMapper usuarioMapper , 
+                                     PasswordEncoder passwordEncoder){
         this.crudUsuarioEntity = crudUsuarioEntity;
         this.usuarioMapper = usuarioMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -38,7 +44,22 @@ public class UsuarioEntityRepository implements IUsuarioRepository{
 
     @Override
     public UsuarioDto save(UsuarioInsertDto usuarioInsertDto) {
+
         UsuarioEntity usuarioEntity = this.usuarioMapper.toEntity(usuarioInsertDto);
+
+        PerfilEntity perfil = new PerfilEntity();
+        perfil.setUsername(usuarioInsertDto.username());
+        perfil.setContrasenia(
+            passwordEncoder.encode(usuarioInsertDto.contrasenia())
+        );
+
+        RolEntity rol = new RolEntity();
+        rol.setIdRol(2);
+
+        perfil.setRol(rol);
+
+        perfil.setUsuario(usuarioEntity);
+        usuarioEntity.setPerfil(perfil);
 
         return this.usuarioMapper.toDto(this.crudUsuarioEntity.save(usuarioEntity));
     }
