@@ -58,4 +58,11 @@ public class MetaEntityRepository implements IMetaRepository{
         return metaEntity;
     }
 
+    @Override
+    public List<MetaEntity> findByUsuarioIdUsuario(Integer idUsuario) {
+        List<MetaEntity> metaEntity = this.crudMetaEntity.findByUsuarioIdUsuario(idUsuario);
+
+        return metaEntity;
+    }
+
 }

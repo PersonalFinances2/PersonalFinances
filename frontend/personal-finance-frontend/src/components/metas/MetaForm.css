@@ -1,0 +1,81 @@
+.meta-form-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.meta-form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.meta-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.meta-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.meta-form-group input {
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.meta-form-group input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+}
+
+.meta-form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-guardar {
+    background-color: #198754;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-guardar:hover {
+    background-color: #157347;
+}
+
+.btn-cancelar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-cancelar:hover {
+    background-color: #bb2d3b;
+}

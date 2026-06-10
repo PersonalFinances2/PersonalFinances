@@ -26,13 +26,8 @@ public class UsuarioEntity {
     @Column(nullable = false)
     private String documento;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "idPerfil", unique = true)
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private PerfilEntity perfil;   
-
-    @ManyToOne
-    @JoinColumn(name = "idRol")
-    private RolEntity rol;
 
 
     @OneToMany(mappedBy = "usuario")
@@ -45,14 +40,6 @@ public class UsuarioEntity {
 
     public void setPerfil(PerfilEntity perfil) {
         this.perfil = perfil;
-    }
-
-    public RolEntity getRol() {
-        return rol;
-    }
-
-    public void setRol(RolEntity rol) {
-        this.rol = rol;
     }
 
     public Integer getIdUsuario() {

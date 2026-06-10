@@ -5,7 +5,10 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import com.Tech.personalFinance.domain.dto.MovimientoDto;
+import com.Tech.personalFinance.domain.dto.MovimientoInsertDto;
 import com.Tech.personalFinance.domain.dto.MovimientoMontoDto;
+import com.Tech.personalFinance.persistence.entity.CategoriaEntity;
 import com.Tech.personalFinance.persistence.entity.MovimientoEntity;
 
 @Mapper(componentModel = "spring")
@@ -16,4 +19,20 @@ public interface MovimientoMapper {
 
     List<MovimientoMontoDto> toDto(Iterable<MovimientoEntity> movimientoEntity);
 
+    
+    @Mapping(source = "categoria.idCategoria", target = "idCategoria")
+    MovimientoDto toDtoMovimiento(MovimientoEntity movimiento);
+
+    List<MovimientoDto> toDtoMovimiento(Iterable<MovimientoEntity> movimiento);
+
+    @Mapping(source = "idCategoria", target = "categoria")
+    MovimientoEntity toEntity(MovimientoInsertDto movimientoInsertDto);
+
+    default CategoriaEntity mapCategoria(Integer id) {      
+
+        CategoriaEntity categoria = new CategoriaEntity();
+        categoria.setIdCategoria(id);
+
+        return categoria;
+    }
 }
